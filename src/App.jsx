@@ -17,42 +17,57 @@ function App() {
     return savedUser ? JSON.parse(savedUser) : null;
   });
 
+  const [token, setToken] = useState(() => {
+    const savedToken = localStorage.getItem('token');
+    return savedToken ? savedToken : null;
+  });
+
   useEffect(() => {
     if (user) {
       localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('token', token);
     } else {
       localStorage.removeItem('user');
+      localStorage.removeItem('token');
     }
-  }, [user]);
+  }, [user, token]);
+
+  const handleLogin = (userData, tokenData) => {
+    setUser(userData);
+    setToken(tokenData);
+  };
+
+  const isAdmin = user && user.role === 'admin';
 
   return (
     <BrowserRouter>
-      <Routes>
-        {/* General Routes */}
-        <Route path="/" element={<Layout><HomePage /></Layout>} />
-        <Route path="/yoga-details" element={<Layout><YogaDetails /></Layout>} />
-        <Route path="/login" element={<Layout><Login setUser={setUser} /></Layout>} />
-        <Route path="/register" element={<Layout><Register /></Layout>} />
-        <Route path="/forgot-password" element={<Layout><ForgetPassword /></Layout>} />
-        <Route path="/reset-password/:token" element={<Layout><ResetPassword /></Layout>} />
+      <Layout>
+        <Routes>
+          {/* General Routes */}
+          <Route path="/" element={<HomePage />} />
+          <Route path="/yoga-details" element={<YogaDetails />} />
+          <Route path="/login" element={<Login setUser={handleLogin} />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<ForgetPassword />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
 
-        {/* Role-based Redirects */}
-        {user ? (
-          <>
-            <Route path="/nutrition-dashboard" element={<Layout><Dashboard /></Layout>} />
-            {user.role === 'admin' ? (
-              <Route path="/*" element={<AdminRoutes />} />
-            ) : (
-              <Route path="/*" element={<UserRoutes />} />
-            )}
-          </>
-        ) : (
-          <Route path="/*" element={<Navigate to="/login" />} />
-        )}
-      </Routes>
+          {/* Protected Routes */}
+          {user ? (
+            <>
+              <Route path="/nutrition-dashboard" element={<Dashboard />} />
+              {isAdmin ? (
+                <Route path="/*" element={<AdminRoutes />} />
+              ) : (
+                <Route path="/*" element={<UserRoutes />} />
+              )}
+            </>
+          ) : (
+            <Route path="/*" element={<Navigate to="/login" />} />
+          )}
+        </Routes>
+      </Layout>
     </BrowserRouter>
   );
 }
-
 
 export default App;
