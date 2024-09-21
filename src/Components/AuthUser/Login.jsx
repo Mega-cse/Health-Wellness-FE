@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Auth.css';
@@ -8,8 +8,7 @@ const Login = ({ setUser }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [redirectPath, setRedirectPath] = useState(null);
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Use useNavigate instead of useHistory
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -26,8 +25,10 @@ const Login = ({ setUser }) => {
       if (response.data.success) {
         const user = response.data.user;
         setUser(user);
-        const path = user.role === 'admin' ? '/admin-dashboard' : '/user-dashboard';
-        setRedirectPath(path); // Set the redirect path
+
+        // Use navigate for redirection
+        const redirectPath = user.role === 'admin' ? '/admin-dashboard' : '/user-dashboard';
+        navigate(redirectPath, { replace: true }); // Navigate to the respective dashboard
       } else {
         setError(response.data.message || 'Login failed');
       }
@@ -37,13 +38,6 @@ const Login = ({ setUser }) => {
       setLoading(false);
     }
   };
-
-  // UseEffect to handle navigation
-  useEffect(() => {
-    if (redirectPath) {
-      navigate(redirectPath, { replace: true }); // Navigate to the path set above
-    }
-  }, [redirectPath, navigate]);
 
   return (
     <div className="auth-container">
