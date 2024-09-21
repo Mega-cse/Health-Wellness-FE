@@ -13,13 +13,11 @@ import Dashboard from './Components/Nutrtion/Dashboard';
 
 function App() {
   const [user, setUser] = useState(() => {
-    // Check localStorage for user data
     const savedUser = localStorage.getItem('user');
     return savedUser ? JSON.parse(savedUser) : null;
   });
 
   useEffect(() => {
-    // Save user to localStorage whenever it changes
     if (user) {
       localStorage.setItem('user', JSON.stringify(user));
     } else {
@@ -49,12 +47,12 @@ function App() {
             )}
           </>
         ) : (
-          // Redirect to login if not authenticated
           <Route path="/*" element={<Navigate to="/login" />} />
         )}
       </Routes>
     </BrowserRouter>
   );
 }
+
 
 export default App;

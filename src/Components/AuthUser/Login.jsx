@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import './Auth.css';
 
@@ -14,29 +14,30 @@ const Login = ({ setUser }) => {
     event.preventDefault();
     setError(null);
     setLoading(true);
-  
+
     try {
-      const response = await axios.post('https://health-wellness-be-3.onrender.com/api/auth/login', {
-        email,
-        password,
-      }, {
-        withCredentials: true,
-      });
-  
+      const response = await axios.post(
+        'https://health-wellness-be-3.onrender.com/api/auth/login',
+        { email, password },
+        { withCredentials: true }
+      );
+
       if (response.data.success) {
-        localStorage.setItem('user', JSON.stringify(response.data.user)); // Save user object
-        setUser(response.data.user); // Update state
-        navigate(response.data.user.role === 'admin' ? '/admin-dashboard' : '/user-dashboard');
+        const user = response.data.user;
+        setUser(user);  // This updates the user state in App
+
+        const redirectPath = user.role === 'admin' ? '/admin-dashboard' : '/user-dashboard';
+        console.log('Navigating to:', redirectPath);
+        navigate(redirectPath); // Navigate to the respective dashboard
+      } else {
+        setError(response.data.message || 'Login failed');
       }
-      
     } catch (error) {
-      console.error('Network error:', error.response ? error.response.data : error);
       setError(error.response?.data?.message || 'Network error. Please try again.');
     } finally {
       setLoading(false);
     }
   };
-  
 
   return (
     <div className="auth-container">

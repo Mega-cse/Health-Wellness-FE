@@ -65,90 +65,46 @@ const Register = () => {
             <h1 style={{ textAlign: 'center', marginBottom: '1rem' }}>Register</h1>
             <div>
               <label htmlFor="username">Username:</label>
-              <Field 
-                type="text" 
-                id="username" 
-                name="username" 
-                autoComplete="username" // Added autocomplete attribute
-                style={{ width: '100%', padding: '0.75rem', marginBottom: '1rem', border: '1px solid #ddd', borderRadius: '4px' }} 
-              />
+              <Field type="text" id="username" name="username" autoComplete="username" style={{ width: '100%', padding: '0.75rem', marginBottom: '1rem', border: '1px solid #ddd', borderRadius: '4px' }} />
               <ErrorMessage name="username" component="div" style={{ color: 'red' }} />
             </div>
             <div>
               <label htmlFor="email">Email:</label>
-              <Field 
-                type="email" 
-                id="email" 
-                name="email" 
-                autoComplete="email" // Added autocomplete attribute
-                style={{ width: '100%', padding: '0.75rem', marginBottom: '1rem', border: '1px solid #ddd', borderRadius: '4px' }} 
-              />
+              <Field type="email" id="email" name="email" autoComplete="email" style={{ width: '100%', padding: '0.75rem', marginBottom: '1rem', border: '1px solid #ddd', borderRadius: '4px' }} />
               <ErrorMessage name="email" component="div" style={{ color: 'red' }} />
             </div>
             <div>
               <label htmlFor="password">Password:</label>
-              <Field 
-                type="password" 
-                id="password" 
-                name="password" 
-                autoComplete="new-password" // Added autocomplete attribute
-                style={{ width: '100%', padding: '0.75rem', marginBottom: '1rem', border: '1px solid #ddd', borderRadius: '4px' }} 
-              />
+              <Field type="password" id="password" name="password" autoComplete="new-password" style={{ width: '100%', padding: '0.75rem', marginBottom: '1rem', border: '1px solid #ddd', borderRadius: '4px' }} />
               <ErrorMessage name="password" component="div" style={{ color: 'red' }} />
             </div>
             <div>
               <label htmlFor="age">Age:</label>
-              <Field 
-                type="number" 
-                id="age" 
-                name="age" 
-                autoComplete="age" // Added autocomplete attribute (non-standard, but included)
-                style={{ width: '100%', padding: '0.75rem', marginBottom: '1rem', border: '1px solid #ddd', borderRadius: '4px' }} 
-              />
+              <Field type="number" id="age" name="age" autoComplete="age" style={{ width: '100%', padding: '0.75rem', marginBottom: '1rem', border: '1px solid #ddd', borderRadius: '4px' }} />
               <ErrorMessage name="age" component="div" style={{ color: 'red' }} />
             </div>
             <div>
               <label htmlFor="height">Height:</label>
-              <Field 
-                type="number" 
-                id="height" 
-                name="height" 
-                autoComplete="height" // Added autocomplete attribute (non-standard, but included)
-                style={{ width: '100%', padding: '0.75rem', marginBottom: '1rem', border: '1px solid #ddd', borderRadius: '4px' }} 
-              />
+              <Field type="number" id="height" name="height" autoComplete="height" style={{ width: '100%', padding: '0.75rem', marginBottom: '1rem', border: '1px solid #ddd', borderRadius: '4px' }} />
               <ErrorMessage name="height" component="div" style={{ color: 'red' }} />
             </div>
             <div>
               <label htmlFor="weight">Weight:</label>
-              <Field 
-                type="number" 
-                id="weight" 
-                name="weight" 
-                autoComplete="weight" // Added autocomplete attribute (non-standard, but included)
-                style={{ width: '100%', padding: '0.75rem', marginBottom: '1rem', border: '1px solid #ddd', borderRadius: '4px' }} 
-              />
+              <Field type="number" id="weight" name="weight" autoComplete="weight" style={{ width: '100%', padding: '0.75rem', marginBottom: '1rem', border: '1px solid #ddd', borderRadius: '4px' }} />
               <ErrorMessage name="weight" component="div" style={{ color: 'red' }} />
             </div>
             <div>
               <label htmlFor="location">Location:</label>
-              <Field 
-                type="text" 
-                id="location" 
-                name="location" 
-                autoComplete="address" // Added autocomplete attribute
-                style={{ width: '100%', padding: '0.75rem', marginBottom: '1rem', border: '1px solid #ddd', borderRadius: '4px' }} 
-              />
+              <Field type="text" id="location" name="location" autoComplete="address" style={{ width: '100%', padding: '0.75rem', marginBottom: '1rem', border: '1px solid #ddd', borderRadius: '4px' }} />
               <ErrorMessage name="location" component="div" style={{ color: 'red' }} />
             </div>
             <div>
               <label htmlFor="role">Role:</label>
-              <Field 
-                type="text" 
-                id="role" 
-                name="role" 
-                autoComplete="role" // Added autocomplete attribute (non-standard, but included)
-                style={{ width: '100%', padding: '0.75rem', marginBottom: '1rem', border: '1px solid #ddd', borderRadius: '4px' }} 
-              />
+              <Field as="select" id="role" name="role" style={{ width: '100%', padding: '0.75rem', marginBottom: '1rem', border: '1px solid #ddd', borderRadius: '4px' }}>
+                <option value="" label="Select role" />
+                <option value="user" label="User" />
+                <option value="admin" label="Admin" />
+              </Field>
               <ErrorMessage name="role" component="div" style={{ color: 'red' }} />
             </div>
             <button
