@@ -25,9 +25,16 @@ const Login = ({ setUser }) => {
       if (response.data && response.data.success) {
         const user = response.data.user;
         setUser(user);
+<<<<<<< HEAD
   
         const redirectPath = user.role === 'admin' ? '/admin-dashboard' : '/user-dashboard';
         navigate(redirectPath, { replace: true });
+=======
+
+        // Use navigate for redirection
+        const redirectPath = user.role === 'admin' ? '/admin-dashboard' : '/user-dashboard';
+        navigate(redirectPath, { replace: true }); // Navigate to the respective dashboard
+>>>>>>> 7b0bcc32f1869510ff40e2605ae3c7773d3df294
       } else {
         throw new Error(response.data.message || 'Login failed');
       }
