@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Auth.css';
 
@@ -8,37 +8,37 @@ const Login = ({ setUser }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Use useNavigate instead of useHistory
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError(null);
     setLoading(true);
-
+  
     try {
       const response = await axios.post(
         'https://health-wellness-be-3.onrender.com/api/auth/login',
         { email, password },
         { withCredentials: true }
       );
-
-      if (response.data.success) {
+  
+      if (response.data && response.data.success) {
         const user = response.data.user;
-        setUser(user);  // This updates the user state in App
-
+        setUser(user);
+  
         const redirectPath = user.role === 'admin' ? '/admin-dashboard' : '/user-dashboard';
-        console.log('Navigating to:', redirectPath);
-        navigate(redirectPath); // Navigate to the respective dashboard
+        navigate(redirectPath, { replace: true });
       } else {
-        setError(response.data.message || 'Login failed');
+        throw new Error(response.data.message || 'Login failed');
       }
-    } catch (error) {
-      setError(error.response?.data?.message || 'Network error. Please try again.');
+    } catch (err) {
+      console.error('Login error:', err); // Log the error
+      setError(err.response?.data?.message || 'Network error. Please try again.');
     } finally {
       setLoading(false);
     }
   };
-
+  
   return (
     <div className="auth-container">
       <form className="auth-form" onSubmit={handleSubmit}>
@@ -67,6 +67,9 @@ const Login = ({ setUser }) => {
         {error && <p className="error-message">{error}</p>}
         <div className="forgot-password">
           <Link to="/forgot-password">Forgot Password?</Link>
+        </div>
+        <div className="signup-prompt">
+          <p>Don't have an account? <Link to="/register">Sign up</Link></p>
         </div>
       </form>
     </div>
