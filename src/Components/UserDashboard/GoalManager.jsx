@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -10,7 +9,9 @@ const GoalManager = () => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [editGoalId, setEditGoalId] = useState(null);
-  const [activeTab, setActiveTab] = useState('get'); // Tracks active tab
+  const [activeTab, setActiveTab] = useState('get');
+  const images = [
+    "/images/img.jpg"]
 
   useEffect(() => {
     fetchGoals();
@@ -65,7 +66,7 @@ const GoalManager = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`https://health-wellness-be-3.onrender.com/api/goals/${id}`, { withCredentials: true });
-      fetchGoals(); // Refresh the list after deletion
+      fetchGoals();
     } catch (error) {
       console.error('Error deleting goal:', error);
     }
@@ -78,7 +79,7 @@ const GoalManager = () => {
     setStartDate('');
     setEndDate('');
     setEditGoalId(null);
-    setActiveTab('get'); // Reset to 'get' tab after submission
+    setActiveTab('get');
   };
 
   const renderContent = () => {
@@ -142,8 +143,10 @@ const GoalManager = () => {
     <div style={styles.container}>
       <div style={styles.sidebar}>
         <h3>Goal Management</h3>
+        <img src="/images/img.jpg" alt="Your description" style={styles.image} />
         <button onClick={() => setActiveTab('create')} style={styles.button}>Create Goal</button>
         <button onClick={() => setActiveTab('get')} style={styles.button}>Get Goals</button>
+       
       </div>
       <div style={styles.content}>
         {renderContent()}
@@ -158,15 +161,15 @@ const styles = {
     flexDirection: 'row',
     padding: '20px',
     justifyContent: 'space-between',
-    
     minHeight: '100vh',
+    flexWrap: 'wrap', // Make it responsive
   },
   sidebar: {
     width: '25%',
-   
     padding: '20px',
     borderRadius: '8px',
-   
+    background: '#f7f9fc',
+    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
   },
   content: {
     width: '70%',
@@ -174,27 +177,25 @@ const styles = {
     borderRadius: '8px',
     boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
     background: '#fff',
+    flexGrow: 1, // Allow it to grow
   },
   form: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '5px',
+    gap: '10px',
     maxWidth: '300px',
     margin: 'auto',
   },
   button: {
-    margin: '10px 0',
-    padding: '10px',
+    margin: '5px 0',
+    padding: '8px',
     background: '#007bff',
     color: '#fff',
     border: 'none',
     borderRadius: '4px',
     cursor: 'pointer',
     width: '100%',
-  },
-  
-  buttonHover: {
-    background: '#0056b3',
+    fontSize: '14px', // Reduced size
   },
   goalCard: {
     padding: '15px',
@@ -210,14 +211,20 @@ const styles = {
   },
   deleteButton: {
     marginLeft: '10px',
-    padding: '12px',
+    padding: '8px',
     background: '#dc3545',
     color: '#fff',
     border: 'none',
     borderRadius: '4px',
     cursor: 'pointer',
-    fontSize: '16px',
+    fontSize: '14px', // Reduced size
     transition: 'background 0.3s',
+  },
+  image: {
+    marginTop: '20px',
+    width: '100%',
+    height: 'auto',
+    borderRadius: '4px',
   },
 };
 

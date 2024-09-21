@@ -15,10 +15,9 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if the user is authenticated
     const token = localStorage.getItem('token');
     if (!token) {
-      navigate('/login'); // Redirect to login if not authenticated
+      navigate('/login');
       return;
     }
 
@@ -35,7 +34,7 @@ const AdminDashboard = () => {
   }, [navigate]);
 
   const handleNavigate = (path) => {
-    navigate(path);
+    navigate(`/admin/${path}`); // Adjusted to include /admin prefix
   };
 
   const handleExerciseClick = () => {
@@ -50,10 +49,15 @@ const AdminDashboard = () => {
   const handleModalAction = (action) => {
     setShowModal(false);
     if (action === 'create') {
-      handleNavigate(`/create-${actionType}`);
+      handleNavigate(`create-${actionType}`);
     } else if (action === 'get') {
-      handleNavigate(`/get-${actionType}`);
+      handleNavigate(`get-${actionType}`);
     }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token'); // Clear the token from local storage
+    navigate('/login'); // Redirect to the login page
   };
 
   if (error) return <div className="alert alert-danger">{error}</div>;
@@ -65,7 +69,7 @@ const AdminDashboard = () => {
     <div className="container-fluid">
       <nav className="navbar navbar-expand-lg navbar-light bg-light mb-4">
         <h3 className="navbar-brand">Admin Dashboard</h3>
-        <button onClick={() => handleNavigate('/login')} className="btn btn-primary">Logout</button>
+        <button onClick={handleLogout} className="btn btn-primary">Logout</button>
       </nav>
 
       <div className="row justify-content-center mb-4">
@@ -98,7 +102,7 @@ const AdminDashboard = () => {
           <div className="card shadow-sm">
             <img src="/images/users.jpg" className="card-img-top" alt="Manage Users" />
             <div className="card-body text-center">
-              <button className="btn btn-primary" onClick={() => handleNavigate('/manage-users')}>
+              <button className="btn btn-primary" onClick={() => handleNavigate('manage-users')}>
                 Manage Users
               </button>
             </div>

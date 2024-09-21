@@ -3,7 +3,7 @@ import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-//import './UserDashboard.css';
+// import './UserDashboard.css'; // Uncomment if using a CSS file
 
 const UserDashboard = () => {
   const [user, setUser] = useState(null);
@@ -11,7 +11,6 @@ const UserDashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if the user is authenticated
     const token = localStorage.getItem('token');
     if (!token) {
       navigate('/login'); // Redirect to login if not authenticated
@@ -44,7 +43,7 @@ const UserDashboard = () => {
   };
 
   const handleExerciseClick = () => {
-    navigate('/get-exercises');
+    navigate('/user/get-exercises'); // Updated to include /user prefix
   };
 
   const handleNutritionClick = () => {
@@ -52,11 +51,11 @@ const UserDashboard = () => {
   };
 
   const handleGoalsClick = () => {
-    navigate('/user-goals');
+    navigate('/user/user-goals'); // Updated to include /user prefix
   };
 
   const handleSupportClick = () => {
-    navigate('/support');
+    navigate('/user/support'); // Updated to include /user prefix
   };
 
   return (
@@ -83,7 +82,7 @@ const UserDashboard = () => {
                 </span>
                 {dropdownOpen && (
                   <div className="dropdown-content">
-                    <button onClick={() => navigate('/profile')}>Profile</button>
+                    <button onClick={() => navigate('/user/profile')}>Profile</button>
                     <button onClick={handleLogout}>Logout</button>
                   </div>
                 )}

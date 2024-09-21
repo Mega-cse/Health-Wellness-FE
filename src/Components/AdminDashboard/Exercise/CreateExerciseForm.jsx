@@ -1,4 +1,4 @@
-// Place this in /client/src/components/CreateExerciseForm.js
+// Components/CreateExerciseForm.js
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -7,7 +7,7 @@ const CreateExerciseForm = () => {
   const [duration, setDuration] = useState('');
   const [distance, setDistance] = useState('');
   const [caloriesBurned, setCaloriesBurned] = useState('');
-  const [image, setImage] = useState(null); // For handling image upload
+  const [image, setImage] = useState(null);
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
@@ -19,7 +19,7 @@ const CreateExerciseForm = () => {
     formData.append('distance', distance);
     formData.append('caloriesBurned', caloriesBurned);
     if (image) {
-      formData.append('image', image); // Append the image file
+      formData.append('image', image);
     }
 
     try {
@@ -37,7 +37,7 @@ const CreateExerciseForm = () => {
       setCaloriesBurned('');
       setImage(null);
     } catch (err) {
-      setError('Failed to create exercise');
+      setError('Failed to create exercise: ' + err.response.data.message);
     }
   };
 
@@ -114,12 +114,12 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '100vh', // Full viewport height
-    backgroundColor: '#f8f9fa' // Optional: Background color for better visibility
+    height: '100vh',
+    backgroundColor: '#f8f9fa'
   },
   formContainer: {
     width: '100%',
-    maxWidth: '600px', // Max width for the form container
+    maxWidth: '600px',
     padding: '20px',
     borderRadius: '8px',
     boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',

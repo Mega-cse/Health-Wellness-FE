@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './Components/Layout';
 import HomePage from './Components/HomePage/HomePage';
 import Login from './Components/AuthUser/Login';
@@ -7,9 +7,9 @@ import ForgetPassword from './Components/AuthUser/ForgetPassword';
 import ResetPassword from './Components/AuthUser/ResetPassword';
 import AdminRoutes from './Components/AdminDashboard/AdminRoutes';
 import UserRoutes from './Components/UserDashboard/UserRoutes';
-import { useState, useEffect } from 'react';
-import YogaDetails from './Components/HomePage/YogaDetails';
 import Dashboard from './Components/Nutrtion/Dashboard';
+import ProtectedRoute from './Components/ProtectedRoute';
+import { useState, useEffect } from 'react';
 
 function App() {
   const [user, setUser] = useState(() => {
@@ -32,38 +32,25 @@ function App() {
     }
   }, [user, token]);
 
-  // const handleLogin = (userData, tokenData) => {
-  //   setUser(userData);
-  //   setToken(tokenData);
-  // };
-
-  const isAdmin = user && user.role === 'admin';
-
   return (
     <BrowserRouter>
       <Layout>
         <Routes>
-          {/* General Routes */}
           <Route path="/" element={<HomePage />} />
-          <Route path="/yoga-details" element={<YogaDetails />} />
           <Route path="/login" element={<Login setUser={setUser} setToken={setToken} />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgetPassword />} />
           <Route path="/reset-password/:token" element={<ResetPassword />} />
-
-          {/* Protected Routes */}
-          {user ? (
-            <>
-              <Route path="/nutrition-dashboard" element={<Dashboard />} />
-              {isAdmin ? (
-                <Route path="/*" element={<AdminRoutes />} />
-              ) : (
-                <Route path="/*" element={<UserRoutes />} />
-              )}
-            </>
-          ) : (
-            <Route path="/*" element={<Navigate to="/login" />} />
-          )}
+          <Route path="/user/*" element={<UserRoutes user={user} />} />
+          <Route path="/admin/*" element={<AdminRoutes user={user} />} />
+          <Route 
+            path="/nutrition-dashboard" 
+            element={
+              <ProtectedRoute user={user}>
+                <Dashboard/>
+              </ProtectedRoute>
+            } 
+          />
         </Routes>
       </Layout>
     </BrowserRouter>
