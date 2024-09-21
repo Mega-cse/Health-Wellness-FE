@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Auth.css';
 
-const Login = ({ setUser }) => {
+const Login = ({ setUser,setToken }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -25,7 +25,8 @@ const Login = ({ setUser }) => {
       if (response.data && response.data.success) {
         const user = response.data.user;
         setUser(user);
-  
+        const token=response.data.token;
+        setToken(token)
         const redirectPath = user.role === 'admin' ? '/admin-dashboard' : '/user-dashboard';
         navigate(redirectPath, { replace: true });
       } else {

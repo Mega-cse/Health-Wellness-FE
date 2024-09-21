@@ -32,10 +32,10 @@ function App() {
     }
   }, [user, token]);
 
-  const handleLogin = (userData, tokenData) => {
-    setUser(userData);
-    setToken(tokenData);
-  };
+  // const handleLogin = (userData, tokenData) => {
+  //   setUser(userData);
+  //   setToken(tokenData);
+  // };
 
   const isAdmin = user && user.role === 'admin';
 
@@ -46,7 +46,7 @@ function App() {
           {/* General Routes */}
           <Route path="/" element={<HomePage />} />
           <Route path="/yoga-details" element={<YogaDetails />} />
-          <Route path="/login" element={<Login setUser={handleLogin} />} />
+          <Route path="/login" element={<Login setUser={setUser} setToken={setToken} />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgetPassword />} />
           <Route path="/reset-password/:token" element={<ResetPassword />} />
