@@ -1,0 +1,52 @@
+/* Navbar container */
+.navbar {
+    background-color: #333; /* Dark background color */
+    color: #fff; /* White text color */
+    padding: 0.5rem 1rem; /* Top and bottom padding */
+  }
+  
+  /* Navbar inner container */
+  .navbar-container {
+    display: flex;
+    justify-content: space-between; /* Space between left and right items */
+    align-items: center; /* Center vertically */
+    max-width: 1200px; /* Max width for centering */
+    margin: 0 auto; /* Center the container */
+    width: 100%; /* Ensure it spans the full width */
+  }
+  
+  /* Navbar logo */
+  .navbar-logo {
+    font-size: 1.5rem; /* Font size for the logo */
+    font-weight: bold; /* Bold text */
+    margin: 0; /* Remove default margin */
+    text-decoration: none;
+    color: white;
+  }
+  
+  /* Center gap */
+  .navbar-gap {
+    flex-grow: 1; /* Take up available space */
+  }
+  
+  /* Navbar links container */
+  .navbar-links {
+    display: flex;
+    gap: 1rem; /* Space between buttons */
+  }
+  
+  /* Navbar buttons */
+  .navbar-button {
+    color: #fff; /* White text color */
+    text-decoration: none; /* Remove underline */
+    padding: 0.5rem 1rem; /* Padding for buttons */
+    border-radius: 4px; /* Rounded corners */
+    background-color: #007bff; /* Blue background color */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+  }
+  
+  /* Button hover effect */
+  .navbar-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  

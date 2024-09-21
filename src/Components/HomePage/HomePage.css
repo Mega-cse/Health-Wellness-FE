@@ -1,0 +1,224 @@
+/* Homepage container */
+.homepage {
+  font-family: Arial, sans-serif; /* Font for the entire page */
+  margin-top: 0rem; /* Space between the top of the page and Navbar */
+}
+
+/* Image slider container */
+.image-slider {
+  position: relative;
+  width: 100%;
+  height: 600px; /* Adjust as needed */
+  overflow: hidden;
+}
+
+/* Slider images */
+.slider-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 1s ease-in-out;
+  opacity: 0; /* Start with images hidden */
+}
+
+.slider-image.active {
+  opacity: 1; /* Show the active image */
+}
+
+/* Photo section */
+.photo-section {
+  display: flex;
+  flex-direction: row; /* Default layout for larger screens */
+  align-items: center;
+  padding: 3rem;
+  background-color: #f4f4f4; /* Light background for contrast */
+}
+
+.wellness-photo {
+  width: 50%;
+  border-radius: 8px;
+  margin-right: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+}
+
+.photo-description {
+  max-width: 500px;
+}
+
+.photo-description h2 {
+  margin-top: 0;
+  font-size: 2rem; /* Larger heading size */
+}
+
+.photo-description p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Tips section */
+.tips-section {
+  display: flex;
+  flex-direction: row; /* Default layout for larger screens */
+  align-items: center;
+  padding: 2rem;
+}
+
+.tips-description {
+  max-width: 50%;
+}
+
+.tips-description h2 {
+  margin-top: 0;
+  font-size: 1.75rem; /* Larger heading size */
+}
+
+.tips-description p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.tips-description ul {
+  list-style-type: disc;
+  padding-left: 2rem;
+}
+
+.tips-description li {
+  margin-bottom: 0.5rem;
+}
+
+.tips-image {
+  width: 50%;
+  border-radius: 8px;
+  margin-left: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+}
+/* Yoga card styles */
+.yoga-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0; /* Space above and below the card */
+}
+
+.yoga-image {
+  width: 350px; /* Fixed width for the image */
+  height: 200px;
+  border-radius: 8px;
+}
+
+.yoga-description {
+  text-align: center;
+}
+
+.view-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50; /* Green background */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.view-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  /* Photo section for mobile devices */
+  .photo-section {
+    flex-direction: column; /* Stack vertically on small screens */
+    padding: 2rem;
+  }
+
+  .wellness-photo {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .photo-description {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .photo-description h2 {
+    font-size: 1.5rem; /* Adjust heading size */
+  }
+
+  .photo-description p {
+    font-size: 0.875rem; /* Adjust text size */
+  }
+
+  /* Tips section for mobile devices */
+  .tips-section {
+    flex-direction: column; /* Stack vertically on small screens */
+    padding: 1rem;
+  }
+
+  .tips-description {
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .tips-image {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  /* Yoga card adjustments */
+  .yoga-card {
+    flex-direction: column; /* Stack yoga card items */
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .yoga-image {
+    max-width: 80%; /* Responsive width for yoga image */
+  }
+
+  .arrow {
+    font-size: 20px; /* Smaller arrow size */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Additional adjustments for very small screens */
+  .photo-description h2 {
+    font-size: 1.25rem; /* Smaller heading size */
+  }
+
+  .photo-description p {
+    font-size: 0.75rem; /* Smaller text size */
+  }
+
+  .tips-description p {
+    font-size: 0.75rem; /* Smaller text size */
+  }
+
+  .tips-description ul {
+    padding-left: 1rem; /* Adjust padding */
+  }
+
+  .tips-description li {
+    margin-bottom: 0.25rem; /* Reduce spacing */
+  }
+
+  /* Yoga card font size adjustments */
+  .yoga-description h2 {
+    font-size: 1.5rem; /* Adjust heading size */
+  }
+
+  .yoga-description p {
+    font-size: 0.875rem; /* Adjust text size */
+  }
+}

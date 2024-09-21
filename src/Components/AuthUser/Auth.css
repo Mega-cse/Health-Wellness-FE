@@ -1,0 +1,71 @@
+/* Container for centering the form */
+.auth-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: calc(100vh - 60px); /* Adjusted height to account for navbar height */
+    background-color: #f4f4f4; /* Light background color */
+    padding: 0 2rem; /* Optional: Padding for responsiveness */
+  }
+  
+  /* Form styling */
+  .auth-form {
+    background-color: #fff; /* White background for the form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 2rem; /* Padding inside the form */
+    max-width: 400px; /* Max width of the form */
+    width: 100%; /* Full width up to max-width */
+  }
+  
+  /* Form heading */
+  .auth-form h1 {
+    margin-bottom: 1rem; /* Space below the heading */
+    font-size: 1.5rem; /* Font size for the heading */
+    text-align: center; /* Center align the heading */
+  }
+  
+  /* Form fields */
+  .auth-form div {
+    margin-bottom: 1rem; /* Space below each form field container */
+  }
+  
+  .auth-form label {
+    display: block; /* Block display for labels */
+    margin-bottom: 0.5rem; /* Space below the label */
+    font-weight: bold; /* Bold text for labels */
+  }
+  
+  .auth-form input {
+    width: 100%; /* Full width of the container */
+    padding: 0.75rem; /* Padding inside the input */
+    margin-bottom: 0.5rem; /* Space below each input */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding and border in element's width */
+  }
+  
+  /* Error messages */
+  .auth-form .error-message {
+    color: red; /* Red color for error messages */
+    font-size: 0.875rem; /* Smaller font size for error messages */
+    margin-top: 0.25rem; /* Space above the error message */
+  }
+  
+  /* Submit button */
+  .auth-form button {
+    width: 100%; /* Full width of the container */
+    padding: 0.75rem; /* Padding inside the button */
+    background-color: #007bff; /* Blue background color */
+    border: none; /* Remove default border */
+    color: #fff; /* White text color */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1rem; /* Font size for the button */
+    transition: background-color 0.3s ease; /* Smooth transition */
+  }
+  
+  .auth-form button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
