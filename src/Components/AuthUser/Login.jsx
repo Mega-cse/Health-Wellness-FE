@@ -21,8 +21,9 @@ const Login = ({ setUser,setToken }) => {
         { email, password },
         { withCredentials: true }
       );
-  
+       
       if (response.data && response.data.success) {
+        console.log(response.data)
         const user = response.data.user;
         setUser(user);
         const token=response.data.token;
