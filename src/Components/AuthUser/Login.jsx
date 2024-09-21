@@ -24,11 +24,11 @@ const Login = ({ setUser }) => {
 
       if (response.data.success) {
         const user = response.data.user;
-        setUser(user);  // This updates the user state in App
+        setUser(user);  // Update the user state in App
 
+        // Alternative navigation using window.location
         const redirectPath = user.role === 'admin' ? '/admin-dashboard' : '/user-dashboard';
-        console.log('Navigating to:', redirectPath);
-        navigate(redirectPath); // Navigate to the respective dashboard
+        window.location.href = redirectPath; // Use window.location for navigation
       } else {
         setError(response.data.message || 'Login failed');
       }
@@ -67,6 +67,9 @@ const Login = ({ setUser }) => {
         {error && <p className="error-message">{error}</p>}
         <div className="forgot-password">
           <Link to="/forgot-password">Forgot Password?</Link>
+        </div>
+        <div className="signup-prompt">
+          <p>Don't have an account? <Link to="/register">Sign up</Link></p>
         </div>
       </form>
     </div>
