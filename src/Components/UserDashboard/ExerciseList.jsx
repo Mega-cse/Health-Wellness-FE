@@ -27,7 +27,7 @@ const ExerciseList = () => {
 
   const handleTrackClick = () => {
     if (selectedExerciseId) {
-      navigate(`track-exercise/${selectedExerciseId}`);
+      navigate(`/user/get-exercises/track-exercise/${selectedExerciseId}`);
     } else {
       alert('Please select an exercise to track.');
     }
