@@ -37,7 +37,11 @@ const UserManagement = () => {
   );
 
   const handleView = (userId) => {
+<<<<<<< HEAD
     navigate(`/admin/manage-users/user-details/${userId}`);
+=======
+    navigate(`/admin/user-details/${userId}`);
+>>>>>>> 8c32077a10f94c10ad8897307b05358f76ea1c4d
   };
   
 
