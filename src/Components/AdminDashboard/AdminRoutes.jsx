@@ -9,13 +9,13 @@ import ListOfExercises from './Exercise/ListOfExercises';
 import AdminDashboard from '../AdminDashboard/AdminDashboard';
 import ProtectedRoute from '../ProtectedRoute';
 
-const AdminRoutes = ({ user }) => {
+const AdminRoutes = () => {
   return (
     <Routes>
       <Route
         path="admin-dashboard"
         element={
-          <ProtectedRoute user={user}>
+          <ProtectedRoute >
             <AdminDashboard />
           </ProtectedRoute>
         }
@@ -23,7 +23,7 @@ const AdminRoutes = ({ user }) => {
       <Route
         path="create-exercise"
         element={
-          <ProtectedRoute user={user}>
+          <ProtectedRoute >
             <CreateExerciseForm />
           </ProtectedRoute>
         }
@@ -31,15 +31,15 @@ const AdminRoutes = ({ user }) => {
       <Route
         path="manage-users"
         element={
-          <ProtectedRoute user={user}>
+          <ProtectedRoute >
             <UserManagement />
           </ProtectedRoute>
         }
       />
       <Route
-        path="user-details/:userId"
+        path="manage-users/user-details/:userId"
         element={
-          <ProtectedRoute user={user}>
+          <ProtectedRoute>
             <UserDetails />
           </ProtectedRoute>
         }
@@ -47,7 +47,7 @@ const AdminRoutes = ({ user }) => {
       <Route
         path="get-exercise"
         element={
-          <ProtectedRoute user={user}>
+          <ProtectedRoute>
             <ListOfExercises />
           </ProtectedRoute>
         }
@@ -55,7 +55,7 @@ const AdminRoutes = ({ user }) => {
       <Route
         path="update-exercise/:id"
         element={
-          <ProtectedRoute user={user}>
+          <ProtectedRoute >
             <UpdateExercise />
           </ProtectedRoute>
         }

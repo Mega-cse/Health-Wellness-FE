@@ -148,7 +148,7 @@ const Profile = () => {
         </div>
       </div>
       <button 
-        onClick={() => navigate('/user-dashboard')} 
+        onClick={() => navigate('/user/user-dashboard')} 
         style={{
           padding: '10px 15px',
           border: 'none',

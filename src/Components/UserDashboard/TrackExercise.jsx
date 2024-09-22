@@ -43,7 +43,7 @@ const TrackExercise = () => {
       }, { withCredentials: true });
   
       alert('Exercise tracked successfully!');
-      navigate('/user-dashboard');
+      navigate('/user/user-dashboard');
     } catch (error) {
       console.error('Error tracking exercise:', error.response ? error.response.data : error.message);
       alert('Failed to track exercise: ' + (error.response ? error.response.data.message : error.message));

@@ -41,12 +41,12 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgetPassword />} />
           <Route path="/reset-password/:token" element={<ResetPassword />} />
-          <Route path="/user/*" element={<UserRoutes user={user} />} />
-          <Route path="/admin/*" element={<AdminRoutes user={user} />} />
+          <Route path="/user/*" element={<UserRoutes />} />
+          <Route path="/admin/*" element={<AdminRoutes />} />
           <Route 
             path="/nutrition-dashboard" 
             element={
-              <ProtectedRoute user={user}>
+              <ProtectedRoute >
                 <Dashboard/>
               </ProtectedRoute>
             } 

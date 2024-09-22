@@ -9,13 +9,13 @@ import GoalManager from './GoalManager';
 import InquiryForm from './InquiryForm';
 import ProtectedRoute from '../ProtectedRoute';
 
-const UserRoutes = ({ user }) => {
+const UserRoutes = () => {
   return (
     <Routes>
       <Route
         path="user-dashboard"
         element={
-          <ProtectedRoute user={user}>
+          <ProtectedRoute>
             <UserDashboard />
           </ProtectedRoute>
         }
@@ -23,7 +23,7 @@ const UserRoutes = ({ user }) => {
       <Route
         path="profile"
         element={
-          <ProtectedRoute user={user}>
+          <ProtectedRoute>
             <Profile />
           </ProtectedRoute>
         }
@@ -31,7 +31,7 @@ const UserRoutes = ({ user }) => {
       <Route
         path="get-exercises"
         element={
-          <ProtectedRoute user={user}>
+          <ProtectedRoute>
             <ExerciseList />
           </ProtectedRoute>
         }
@@ -39,7 +39,7 @@ const UserRoutes = ({ user }) => {
       <Route
         path="user-goals"
         element={
-          <ProtectedRoute user={user}>
+          <ProtectedRoute>
             <GoalManager />
           </ProtectedRoute>
         }
@@ -47,7 +47,7 @@ const UserRoutes = ({ user }) => {
       <Route
         path="track-exercise/:exerciseId"
         element={
-          <ProtectedRoute user={user}>
+          <ProtectedRoute >
             <TrackExercise />
           </ProtectedRoute>
         }
@@ -55,7 +55,7 @@ const UserRoutes = ({ user }) => {
       <Route
         path="support"
         element={
-          <ProtectedRoute user={user}>
+          <ProtectedRoute>
             <InquiryForm />
           </ProtectedRoute>
         }
