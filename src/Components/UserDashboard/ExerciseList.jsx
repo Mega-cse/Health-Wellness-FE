@@ -27,7 +27,7 @@ const ExerciseList = () => {
 
   const handleTrackClick = () => {
     if (selectedExerciseId) {
-      navigate(`/user/get-exercises/track-exercise/${selectedExerciseId}`);
+      navigate(`/user/track-exercise/${selectedExerciseId}`); // Updated route
     } else {
       alert('Please select an exercise to track.');
     }
@@ -37,7 +37,6 @@ const ExerciseList = () => {
   const styles = {
     container: {
       padding: '20px',
-     
       maxWidth: '1200px',
       margin: 'auto',
     },
@@ -47,7 +46,6 @@ const ExerciseList = () => {
       marginBottom: '50px',
       padding: '20px',      
       color: 'Blue',
-    
     },
     trackButton: {
       backgroundColor: 'blue',
@@ -57,10 +55,6 @@ const ExerciseList = () => {
       borderRadius: '5px',
       cursor: 'pointer',
       transition: 'background-color 0.3s',
-    },
-    trackButtonHover: {
-      backgroundColor: '#0056b3',
-      color: '#fff',
     },
     exerciseList: {
       display: 'flex',
